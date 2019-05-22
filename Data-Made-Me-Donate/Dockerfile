@@ -5,7 +5,8 @@ MAINTAINER Hari Devanathan <hd2zm@tailordev.fr>
 
 #ENV PYTHONUNBUFFERED 1
 
-ADD PIT_Federal_MK_Comparison.py /
+ADD PIT/PIT_Federal_MK_Comparison.py PIT_Federal_MK_Comparison.py 
+ADD SPDAT/SPDAT.py SPDAT.py 
 
 #update packages instlaled in the os
 RUN apt-get update && \
@@ -22,7 +23,7 @@ COPY ./data ./data
 RUN pip install -r requirements.txt
 
 #Run script
-CMD [ "python", "PIT_Federal_MK_Comparison.py" ]
+ENTRYPOINT [ "entrypoint.sh" ]
 
 #Allow access on port 8888
 EXPOSE 8888
